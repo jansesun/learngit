@@ -1,6 +1,6 @@
 (function() {
 	var fs = require('fs'),
-		libraryName = process.argv[2].toUpperCase(),
+		libraryName = (process.argv[2] || '').toUpperCase(),
 		tmpl = [
 			'//inherit <%libraryName%>',
 			'if(window.<%libraryName%>) {',
@@ -29,7 +29,7 @@
 				if(!err) {
 					console.log('library ' + libraryName + ' generated successfully');
 				} else {
-					console.log(err);
+					console.error(err);
 				}
 			});
 		});
